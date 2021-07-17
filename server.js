@@ -12,7 +12,7 @@ mongo.connect('mongodb://127.0.0.1/mongochat', function (err, db) {
 
   // connect to socket.io
   // creating function () => {} and function(){} are both the same
-  client.on('connection', () => {
+  client.on('connection', (socket) => {
     let chat = db.collection('chats');
 
     //create function to send status
