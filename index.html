@@ -107,6 +107,19 @@
               textarea.value = '';
             }
           });
+
+          //  handle input
+          textarea.addEventListener('keydown', (event) => {
+            if (event.which === 13 && event.shiftKey == false) {
+              // emit to server input
+              socket.emit('input', {
+                name: username.value,
+                message: textarea.value,
+              });
+
+              event.preventDefault();
+            }
+          });
         }
       })();
     </script>
