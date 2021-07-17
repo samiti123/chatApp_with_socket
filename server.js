@@ -23,5 +23,16 @@ mongo.connect('mongodb://127.0.0.1/mongochat', function (err, db) {
     // sendStatus = function () {
     //   socket.emit('status', s);
     // };
+
+    // get chats from mongo collection
+    chat
+      .find()
+      .limit(100)
+      .sort({ _id: 1 })
+      .toArray(function (err, res) {
+        if (err) {
+          throw err;
+        }
+      });
   });
 });
