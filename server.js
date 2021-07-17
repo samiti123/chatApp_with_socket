@@ -57,5 +57,14 @@ mongo.connect('mongodb://127.0.0.1/mongochat', function (err, db) {
         });
       }
     });
+
+    // handle clear
+    socket.on('clear', (data) => {
+      // remove all chats from collection
+      chat.remove({}, () => {
+        // emit cleared
+        socket.emit('cleared');
+      });
+    });
   });
 });
