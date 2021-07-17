@@ -123,15 +123,15 @@
 
           // handle chat clear
 
-          clearBtn.addEventListener('click',() => {
-               socket.emit('clear')
-          }
+          clearBtn.addEventListener('click', () => {
+            socket.emit('clear');
+          });
 
           // clear message
 
           socket.on('cleared', () => {
             messages.textContent = '';
-          })
+          });
         }
       })();
     </script>
