@@ -33,6 +33,9 @@ mongo.connect('mongodb://127.0.0.1/mongochat', function (err, db) {
         if (err) {
           throw err;
         }
+
+        //emit the messages
+        socket.emit('output', res);
       });
   });
 });
