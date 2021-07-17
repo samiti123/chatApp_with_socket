@@ -81,6 +81,10 @@
 
         if (socket !== undefined) {
           console.log('connect to socket...');
+
+          socket.on('output', function (data) {
+            console.log(data);
+          });
         }
       })();
     </script>
