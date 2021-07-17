@@ -83,7 +83,17 @@
           console.log('connect to socket...');
 
           socket.on('output', function (data) {
-            console.log(data);
+            // console.log(data);
+            if (data.length) {
+              for (var x; x < data.length; x++) {
+                // build out message div
+                var message = document.createElement('div');
+                message.setAttribute('class', 'chat-message');
+                message.textContent = data[x].name + ': ' + data[x].message;
+                message.appendChild(message);
+                messages.insertBefore(message, messages.firstChild);
+              }
+            }
           });
         }
       })();
