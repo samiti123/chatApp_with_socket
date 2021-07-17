@@ -82,6 +82,7 @@
         if (socket !== undefined) {
           console.log('connect to socket...');
 
+          // handle output
           socket.on('output', function (data) {
             // console.log(data);
             if (data.length) {
@@ -94,6 +95,14 @@
                 messages.insertBefore(message, messages.firstChild);
               }
             }
+          });
+
+          // get status from server
+          socket.on('status', (data) => {
+            // get message status
+            setStatus(typeof data === 'object' ? data.message : data);
+
+            //
           });
         }
       })();
