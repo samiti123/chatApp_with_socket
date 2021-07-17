@@ -42,6 +42,14 @@ mongo.connect('mongodb://127.0.0.1/mongochat', function (err, db) {
     socket.on('input', (data) => {
       let name = data.name;
       let message = data.message;
+
+      // check for name and message
+      if ((name = '' || message == '')) {
+        // insert message
+        chat.insert({ name: name, message: message }, () => {
+          client.emit('output', [data]);
+        });
+      }
     });
   });
 });
